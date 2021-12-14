@@ -71,7 +71,7 @@
         <input type="number" name="radar" id="radar">
         <button id="verificar">Verificar</button>
         <button id="clear">Limpar</button>
-        <div id="resultado"></div>
+        <div id="resultado">Dirija sempre com segurança!</div>
     </div>
 
     <script>
@@ -85,12 +85,10 @@
         function vel(){
             let veloc = Number(txradar.value)
             if (veloc > 40){
-                res.innerHTML += `Velocidade: <strong>${veloc}Km/h.</strong> Ultrapassou a velocidade máxima permitida de 40Km/h, você foi <strong>MULTADO!</strong>`
+                res.innerHTML += `<br>Velocidade: <strong>${veloc}Km/h.</strong> Ultrapassou a velocidade máxima permitida de 40Km/h, você foi <strong>MULTADO!</strong>`
                 txradar.style.background="red"
                 res.style.background='red'
             }
-
-            res.innerHTML += `<br>Dirija sempre com segurança!`
               
         }
 
