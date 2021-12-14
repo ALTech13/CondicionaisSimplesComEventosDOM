@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste condicionais simples</title>
+    <style>
+        .container{
+            background-image: url(carrinho.gif);
+            background-repeat: no-repeat;
+            height: 550px;
+            background-size: cover;
+            background-position: right;
+            text-align: center;
+            
+            
+        }
+
+        img{
+            position: relative;
+            padding: 20px 0 0px 700px;  
+            width: 60px;  
+        }
+
+        #radar{
+            height: 22px;
+            width: 36px;
+            border: groove gray 5px;
+            position: absolute;
+            margin: 34px -54px;
+        }
+
+        #radar:hover{cursor: pointer;}
+
+        #resultado{
+            width: 400px;
+            height: 80px;
+            border: hotpink 1px dashed;
+            margin: -90px auto;
+            background-color: ivory;
+            font: normal 10pt verdana;
+
+        }
+        #verificar{
+            position: absolute;
+            margin: 41px 0px 0px 8px;
+        }
+
+        .comando{
+            color: red;
+            font: oblique 10pt verdana; 
+            background-color: lightblue;
+        }
+
+        #clear{
+            position: absolute;
+            margin: 70px 0px 0px 8px;
+            width: 64px
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Testando condicionais simples com eventos DOM</h1>
+        <p>Neste teste vamos praticar condicionais simples, também conhecidas como desvios condicionais, onde a execução do bloco de código acontece quando determinada condição é satisfeita, não sendo necessária a execução caso essa condição não seja atendida.</p>
+        <hr>
+        <p class="comando">Click na tela do radar, digite uma velocidade para o carro, click em verificar e veja o que acontece...</p>
+        <p class="comando">Para reiniciar click em limpar</p>
+        <img src="radar-removebg-preview.png" alt="radar">
+        <input type="number" name="radar" id="radar">
+        <button id="verificar">Verificar</button>
+        <button id="clear">Limpar</button>
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        var txradar = window.document.querySelector('#radar')
+        var res = window.document.querySelector('#resultado')
+        var verificar = window.document.querySelector('#verificar')
+        verificar.addEventListener('click', vel)
+        var limpar = window.document.querySelector('#clear')
+        limpar.addEventListener('click', clear)
+
+        function vel(){
+            let veloc = Number(txradar.value)
+            if (veloc > 40){
+                res.innerHTML += `Velocidade: <strong>${veloc}Km/h.</strong> Ultrapassou a velocidade máxima permitida de 40Km/h, você foi <strong>MULTADO!</strong>`
+                txradar.style.background="red"
+                res.style.background='red'
+            }
+
+            res.innerHTML += `<br>Dirija sempre com segurança!`
+              
+        }
+
+        function clear(){
+            res.innerText= ""
+            txradar.value= ""
+            res.style.background='white'
+            txradar.style.background='white'
+        }
+    </script>
+</body>
+</html>
